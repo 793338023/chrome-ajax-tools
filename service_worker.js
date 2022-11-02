@@ -1,8 +1,7 @@
 
 chrome.action.onClicked.addListener(() => {
 
-  chrome.storage.local.get("iframeVisible", ({iframeVisible}) => {
-    console.table({iframeVisible});
+  chrome.storage.local.get("iframeVisible", ({ iframeVisible }) => {
     chrome.tabs.query(
       {active: true, currentWindow: true},
       function (tabs) {
@@ -11,7 +10,6 @@ chrome.action.onClicked.addListener(() => {
           tabs[0].id,
           {type: 'iframeToggle', iframeVisible},
           function (response) {
-            console.log('【service_worker.js】【ajax-tools-iframe-show】返回消息content->service_worker', response);
             chrome.storage.local.set({iframeVisible: response.nextIframeVisible});
           }
         );

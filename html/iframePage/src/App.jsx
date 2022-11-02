@@ -70,7 +70,6 @@ function App() {
             tabs[0].id,
             {type: 'iframeToggle', iframeVisible},
             function (response) {
-              console.log('【App.jsx】【ajax-tools-iframe-show】返回消息content->popup', response);
               // iframeVisible = response.nextIframeVisible;
               chrome.storage.local.set({iframeVisible: response.nextIframeVisible});
             }
@@ -89,7 +88,6 @@ function App() {
           tabs[0].id,
           {type: 'iframeZoom', iframeZoom: zoom},
           function (response) {
-            console.log('【App.jsx】【ajax-tools-iframe-show】返回消息content->popup', response);
             setZoom(zoom === 'out' ? 'in' : 'out');
           }
         );

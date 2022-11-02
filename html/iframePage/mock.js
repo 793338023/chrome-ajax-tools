@@ -198,8 +198,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            root: context.root || context.currentContext,
 	            // 模板的根
 	            templateRoot: context.templateRoot || context.templateCurrentContext || template
-	        }
-	        // console.log('path:', context.path.join('.'), template)
+			}
 
 	    var rule = Parser.parse(name)
 	    var type = Util.type(template)

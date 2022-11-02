@@ -13,7 +13,6 @@ function injectedScript (path) {
 injectedScript('html/iframePage/mock.js');
 injectedScript('pageScripts/index.js').addEventListener('load', () => {
   chrome.storage.local.get(['iframeVisible', 'ajaxToolsSwitchOn', 'ajaxToolsSwitchOnNot200', 'ajaxToolsSkin', 'ajaxDataList'], (result) => {
-    console.log('【ajaxTools content.js】【storage】', result);
     const {ajaxToolsSwitchOn = true, ajaxToolsSwitchOnNot200 = true, ajaxDataList = []} = result;
     postMessage({type: 'ajaxTools', to: 'pageScript', key: 'ajaxDataList', value: ajaxDataList});
     postMessage({type: 'ajaxTools', to: 'pageScript', key: 'ajaxToolsSwitchOn', value: ajaxToolsSwitchOn});
@@ -48,7 +47,6 @@ if (window.self === window.top) {
       if (document.body) document.body.appendChild(iframe);
 
       chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        console.log('【ajax-tools-iframe-show】接收消息service_worker->content', request);
         const {type, iframeVisible, iframeZoom} = request;
         if (type === 'iframeToggle') {
           iframe.style.setProperty('transform', iframeVisible ? 'translateX(0)' : 'translateX(calc(100% + 20px))', 'important');
